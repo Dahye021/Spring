@@ -12,6 +12,6 @@
 </head>
 <body>
     <h1>My Servlet</h1><br/>
-    <a href="/my">myServlet</a>
+    <a href="/My">myServlet</a>
 </body>
 </html>
