@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>사칙연산 계산기</title>
+</head>
+<body>
+<h1>사칙연산 계산기</h1>
+<form action="/calc" method="get">
+    <input type="number" name="x" placeholder="첫 번째 숫자" required>
+    <select name="op">
+        <option value="add">add (+)</option>
+        <option value="sub">sub (-)</option>
+        <option value="mul">mul (*)</option>
+        <option value="div">div (/)</option>
+    </select>
+    <input type="number" name="y" placeholder="두 번째 숫자" required>
+    <button type="submit">계산</button>
+</form>
+<p>예시: <a href="/calc?x=3&y=2&op=add">/calc?x=3&y=2&op=add</a></p>
+</body>
+</html>
