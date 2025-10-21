@@ -10,7 +10,7 @@ public class HelloServlet extends HttpServlet {
 
     //init = 인터페이스 끝판왕?
     public void init() {
-        message = "Hello World!";
+        message = "안녕하세요 서블릿!";
     }
 
     // doget = 요청/응답, 톰켓으로 부터 왓스가 제공해주는 객체
