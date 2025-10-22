@@ -1,4 +1,4 @@
-package com.ssg.springex.servlet_basic;
+package com.ssg.springex.homework;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
