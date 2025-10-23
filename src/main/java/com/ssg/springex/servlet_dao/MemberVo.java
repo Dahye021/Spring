@@ -1,14 +1,16 @@
 package com.ssg.springex.servlet_dao;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
-import java.sql.Date;
+import java.util.Date;
 
-@Data
+@Getter
+@Setter
 public class MemberVo {
-    private String id;
-    private String pwd;
     private String name;
-    private String email;
-    private Date joinDate;
+    private String pwd;
+    private String gender;
+    private String hobby;
+    private Date date;
 }

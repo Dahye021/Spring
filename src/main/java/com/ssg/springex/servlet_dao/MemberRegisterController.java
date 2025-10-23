@@ -7,12 +7,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.Date;
-import java.util.List;
 
-@WebServlet("/registerMember")
-public class MemberServlet extends HttpServlet {
+@WebServlet("/memberRegister.do")
+public class MemberRegisterController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -20,37 +18,42 @@ public class MemberServlet extends HttpServlet {
 
         request.setCharacterEncoding("UTF-8");
 
-        // 1. 폼 데이터 받기
-        String id = request.getParameter("user_id");
+
+        // 1. HTML 폼 데이터 받기
+        String name = request.getParameter("user_id");
         String pwd = request.getParameter("user_pwd");
         String gender = request.getParameter("gender");
         String[] hobbies = request.getParameterValues("hobby");
 
-        // 2. 체크박스 문자열로 변환
         String hobbyStr = "";
         if (hobbies != null) {
             hobbyStr = String.join(",", hobbies);
         }
 
-        // 3. VO 객체에 데이터 저장
+        // 2. VO에 담기
         MemberVo vo = new MemberVo();
-        vo.setName(id);
+        vo.setName(name);
         vo.setPwd(pwd);
         vo.setGender(gender);
         vo.setHobby(hobbyStr);
+        vo.setDate(new Date());
 
-        // 4. DAO 호출
+        // 3. DAO 호출
         MemberDAO dao = new MemberDAO();
-        boolean result = dao.insertMember(vo);
+        boolean success = dao.insertMember(vo);
 
-        // 5. JSP로 결과 전달
-        if (result) {
-            request.setAttribute("message", id + " 님 회원가입 성공하였습니다.");
+        // 4. 결과 메시지 설정
+        if (success) {
+            request.setAttribute("message", name + " 님 회원가입 성공하였습니다.");
+            System.out.println(name + "님 회원가입 성공");
         } else {
             request.setAttribute("message", "다시 시도해주세요.");
         }
 
-        RequestDispatcher rd = request.getRequestDispatcher("result.jsp");
+        // 5. JSP로 이동
+        RequestDispatcher rd = request.getRequestDispatcher("memberRegister.jsp");
         rd.forward(request, response);
+
+
     }
 }
